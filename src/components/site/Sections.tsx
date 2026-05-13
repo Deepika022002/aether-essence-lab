@@ -25,9 +25,13 @@ import {
   ArrowUp,
   Send,
 } from "lucide-react";
+import { Award, Trophy, Building2 } from "lucide-react";
 import { HeroScene } from "./HeroScene";
 import { ParticleField } from "./ParticleField";
 import { Reveal } from "./Reveal";
+import profilePic from "@/assets/profile.jpeg";
+
+const RESUME_URL = "/Deepika-Resume.pdf";
 
 /* Brand icons (lucide v1 doesn't ship brand glyphs) */
 function Github({ size = 16 }: { size?: number }) {
@@ -148,7 +152,8 @@ export function Hero() {
               <ExternalLink size={14} className="relative z-10 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="#resume"
+              href={RESUME_URL}
+              download
               className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors"
             >
               <Download size={14} /> Download Resume

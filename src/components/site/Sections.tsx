@@ -107,7 +107,7 @@ export function Hero() {
             className="glass mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs"
           >
             <Sparkles size={12} className="text-[var(--neon-cyan)]" />
-            <span className="text-muted-foreground">Aspiring Assistant Professor · Open to opportunities</span>
+            <span className="text-muted-foreground">Educator & Innovator · Open to opportunities</span>
           </motion.div>
 
           <motion.h1
@@ -126,7 +126,7 @@ export function Hero() {
             transition={{ delay: 1.05 }}
             className="mt-5 text-lg text-muted-foreground md:text-xl"
           >
-            Lecturer · Technical Trainer · Aspiring Assistant Professor.
+            Academic Educator · Leather Technology Specialist · R&D Enthusiast.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -226,7 +226,7 @@ export function Hero() {
 const timeline = [
   { icon: GraduationCap, title: "B.Tech, Leather Technology", org: "Alagappa College of Technology, Anna University · Chennai", desc: "Graduate degree with strong analytical and lab-based foundations." },
   { icon: Briefcase, title: "Trainee Analyst", org: "Test Yantra Software Solutions India Pvt Ltd", desc: "Hands-on training in data analysis, validation, documentation and quality processes." },
-  { icon: BookOpen, title: "Aspiring Assistant Professor", org: "Education · Mentoring · Technical Training", desc: "Passionate about teaching, student engagement and analytical problem solving." },
+  { icon: BookOpen, title: "Academic Educator & Innovator", org: "Education · Mentoring · Leather Technology R&D", desc: "Passionate about teaching, student engagement and analytical problem solving." },
 ];
 
 export function About() {
@@ -648,7 +648,7 @@ export function Resume() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-display text-xl font-bold">Gnanadeepika R</p>
-                  <p className="text-xs text-muted-foreground">Lecturer · Trainer</p>
+                  <p className="text-xs text-muted-foreground">Educator · Innovator</p>
                 </div>
                 <FileText size={20} className="text-[var(--neon-cyan)]" />
               </div>

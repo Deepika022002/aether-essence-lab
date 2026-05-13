@@ -17,13 +17,11 @@ import {
   MessageSquare,
   Mic,
   Languages,
-  Github,
   ExternalLink,
   BookOpen,
   Presentation,
   Brain,
   ClipboardList,
-  Linkedin,
   ArrowUp,
   Send,
 } from "lucide-react";

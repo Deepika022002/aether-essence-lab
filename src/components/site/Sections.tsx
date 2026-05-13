@@ -628,7 +628,7 @@ export function LinkedInSection() {
         <Reveal>
           <div className="glass neon-border relative overflow-hidden rounded-3xl p-10 text-center md:p-14">
             <div className="absolute -inset-1 -z-10 opacity-50 blur-2xl" style={{ background: "var(--gradient-hero)" }} />
-            <Linkedin size={36} className="mx-auto text-[var(--neon-blue)]" />
+            <div className="mx-auto inline-flex text-[var(--neon-blue)]"><Linkedin size={36} /></div>
             <h3 className="mt-4 font-display text-3xl font-bold md:text-4xl">
               Find me on <span className="text-gradient-static">LinkedIn</span>
             </h3>

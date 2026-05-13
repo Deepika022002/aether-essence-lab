@@ -9,10 +9,10 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Gnanadeepika R — Lecturer & Technical Trainer" },
-      { name: "description", content: "Portfolio of Gnanadeepika R — Lecturer, Technical Trainer and aspiring Assistant Professor. Education, mentoring, communication and interactive learning." },
-      { property: "og:title", content: "Gnanadeepika R — Lecturer & Technical Trainer" },
-      { property: "og:description", content: "Portfolio of Gnanadeepika R — Lecturer, Technical Trainer and aspiring Assistant Professor." },
+      { title: "Gnanadeepika R — Educator & Leather Technology Specialist" },
+      { name: "description", content: "Portfolio of Gnanadeepika R — Academic Educator, Leather Technology Specialist and R&D enthusiast. Mentoring, innovation and interactive learning." },
+      { property: "og:title", content: "Gnanadeepika R — Educator & Leather Technology Specialist" },
+      { property: "og:description", content: "Portfolio of Gnanadeepika R — Academic Educator, Leather Technology Specialist and R&D enthusiast." },
     ],
   }),
   component: Index,

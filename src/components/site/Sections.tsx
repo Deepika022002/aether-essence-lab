@@ -535,7 +535,8 @@ export function Resume() {
             the classroom and the lab.
           </p>
           <a
-            href="#contact"
+            href={RESUME_URL}
+            download
             className="mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-primary-foreground"
             style={{ background: "var(--gradient-hero)", boxShadow: "var(--glow-purple)" }}
           >

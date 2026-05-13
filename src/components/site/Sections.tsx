@@ -432,22 +432,29 @@ export function Projects() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-14 grid max-w-3xl gap-6">
           {projects.map((p, i) => (
             <Reveal key={p.title} delay={(i % 3) * 0.1}>
               <TiltCard className="group h-full">
-                <div className="glass neon-border relative h-full overflow-hidden rounded-3xl p-6 transition-shadow duration-500 hover:shadow-[var(--glow-purple)]">
+                <div className="glass neon-border relative h-full overflow-hidden rounded-3xl p-8 transition-shadow duration-500 hover:shadow-[var(--glow-purple)]">
                   <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[var(--neon-purple)] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-50" />
                   <div className="mb-5 flex items-start justify-between">
                     <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
-                    <div className="flex gap-2 opacity-60 transition-opacity group-hover:opacity-100">
-                      <a href="#" className="glass flex h-8 w-8 items-center justify-center rounded-full"><Github size={13} /></a>
-                      <a href="#" className="glass flex h-8 w-8 items-center justify-center rounded-full"><ExternalLink size={13} /></a>
-                    </div>
+                    <span className="rounded-full bg-[var(--neon-cyan)]/10 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-[var(--neon-cyan)]">Final Year Project</span>
                   </div>
-                  <h3 className="font-display text-xl font-semibold">{p.title}</h3>
+                  <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
-                  <div className="mt-5 flex flex-wrap gap-1.5">
+                  {p.bullets && (
+                    <ul className="mt-5 space-y-2">
+                      {p.bullets.map((b) => (
+                        <li key={b} className="flex items-start gap-2 text-sm text-foreground/85">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--neon-magenta)]" />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <div className="mt-6 flex flex-wrap gap-1.5">
                     {p.tags.map((t) => (
                       <span key={t} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-muted-foreground">
                         {t}

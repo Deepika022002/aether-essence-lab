@@ -25,9 +25,13 @@ import {
   ArrowUp,
   Send,
 } from "lucide-react";
+import { Award, Trophy, Building2 } from "lucide-react";
 import { HeroScene } from "./HeroScene";
 import { ParticleField } from "./ParticleField";
 import { Reveal } from "./Reveal";
+import profilePic from "@/assets/profile.jpeg";
+
+const RESUME_URL = "/Deepika-Resume.pdf";
 
 /* Brand icons (lucide v1 doesn't ship brand glyphs) */
 function Github({ size = 16 }: { size?: number }) {
@@ -148,7 +152,8 @@ export function Hero() {
               <ExternalLink size={14} className="relative z-10 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="#resume"
+              href={RESUME_URL}
+              download
               className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors"
             >
               <Download size={14} /> Download Resume
@@ -162,7 +167,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* 3D scene */}
+        {/* 3D scene + profile portrait */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -173,6 +178,24 @@ export function Hero() {
           <Suspense fallback={null}>
             <HeroScene />
           </Suspense>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4, duration: 0.9 }}
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+          >
+            <div
+              className="neon-border relative h-56 w-56 overflow-hidden rounded-full md:h-72 md:w-72"
+              style={{ boxShadow: "var(--glow-purple)" }}
+            >
+              <img
+                src={profilePic}
+                alt="Gnanadeepika Ramkumar portrait"
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -385,12 +408,16 @@ export function Skills() {
 /* ------------- PROJECTS ------------- */
 
 const projects = [
-  { title: "Student Performance Analyzer", desc: "Concept system that ingests student scores, surfaces trends and flags learners needing support.", tags: ["Data Analysis", "Reporting", "SQL"] },
-  { title: "Academic Documentation Hub", desc: "Structured documentation system for course material, assessments and lab manuals.", tags: ["Docs", "Templates", "QA"] },
-  { title: "Technical Training Toolkit", desc: "Modular slide + lab kit for delivering hands-on technical sessions to undergrad students.", tags: ["Training", "Slides", "Labs"] },
-  { title: "Lecture Presentation System", desc: "Reusable presentation framework focused on clarity, visual hierarchy and engagement.", tags: ["Presentation", "Design", "Comms"] },
-  { title: "Data Validation Workflow", desc: "Lightweight validation + QA flow inspired by analyst experience at Test Yantra.", tags: ["Validation", "QA", "Process"] },
-  { title: "Mentor Match Concept", desc: "UI concept matching students to mentors based on skills, goals and schedule overlap.", tags: ["UX", "Concept", "Matching"] },
+  {
+    title: "Design and Development of Luminent Leather Umbrella",
+    desc: "Final-year project exploring luminance treatments for leather, focused on visibility, durability and water repellency.",
+    tags: ["Luminance", "Water Repellency", "Durability"],
+    bullets: [
+      "Luminant characteristics of treated leather",
+      "Water repellency characteristics",
+      "Long-time durability of luminance",
+    ],
+  },
 ];
 
 export function Projects() {
@@ -405,22 +432,29 @@ export function Projects() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-14 grid max-w-3xl gap-6">
           {projects.map((p, i) => (
             <Reveal key={p.title} delay={(i % 3) * 0.1}>
               <TiltCard className="group h-full">
-                <div className="glass neon-border relative h-full overflow-hidden rounded-3xl p-6 transition-shadow duration-500 hover:shadow-[var(--glow-purple)]">
+                <div className="glass neon-border relative h-full overflow-hidden rounded-3xl p-8 transition-shadow duration-500 hover:shadow-[var(--glow-purple)]">
                   <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[var(--neon-purple)] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-50" />
                   <div className="mb-5 flex items-start justify-between">
                     <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
-                    <div className="flex gap-2 opacity-60 transition-opacity group-hover:opacity-100">
-                      <a href="#" className="glass flex h-8 w-8 items-center justify-center rounded-full"><Github size={13} /></a>
-                      <a href="#" className="glass flex h-8 w-8 items-center justify-center rounded-full"><ExternalLink size={13} /></a>
-                    </div>
+                    <span className="rounded-full bg-[var(--neon-cyan)]/10 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-[var(--neon-cyan)]">Final Year Project</span>
                   </div>
-                  <h3 className="font-display text-xl font-semibold">{p.title}</h3>
+                  <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
-                  <div className="mt-5 flex flex-wrap gap-1.5">
+                  {p.bullets && (
+                    <ul className="mt-5 space-y-2">
+                      {p.bullets.map((b) => (
+                        <li key={b} className="flex items-start gap-2 text-sm text-foreground/85">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--neon-magenta)]" />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <div className="mt-6 flex flex-wrap gap-1.5">
                     {p.tags.map((t) => (
                       <span key={t} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-muted-foreground">
                         {t}
@@ -484,6 +518,99 @@ export function Help() {
   );
 }
 
+/* ------------- CREDENTIALS (Certificates + Internships) ------------- */
+
+const certificates = [
+  { icon: Award, title: "Internship — Ajanta Shoe Company", desc: "Industrial internship covering on-floor leather operations." },
+  { icon: Trophy, title: "2nd Position — Throwball, Anna University", desc: "Inter-college sports competition." },
+  { icon: Trophy, title: "1st Position — Color Matching, College Symposium", desc: "Technical competition in color science." },
+];
+
+const internships = [
+  { icon: Building2, title: "Hands-on Training — Ajanta Shoe Company", desc: "Practical training across leather processing and footwear assembly." },
+  { icon: Building2, title: "Hands-on Workshop — Ss International Tanning Exports, Dindigul", desc: "Workshop on tanning operations and export-grade leather processing." },
+];
+
+export function Credentials() {
+  return (
+    <section id="credentials" className="relative overflow-hidden px-6 py-32">
+      <GradientBlobs />
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--neon-cyan)]">05 — Credentials</p>
+          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+            Certificates & <span className="text-gradient-static">Internships</span>.
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <Reveal>
+            <div className="glass neon-border h-full rounded-3xl p-6 md:p-8">
+              <h3 className="mb-6 flex items-center gap-2 font-display text-xl font-semibold">
+                <Award size={18} className="text-[var(--neon-magenta)]" /> Certificates & Achievements
+              </h3>
+              <div className="space-y-4">
+                {certificates.map((c, i) => (
+                  <motion.div
+                    key={c.title}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="glass flex gap-4 rounded-2xl p-4"
+                  >
+                    <div
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                      style={{ background: "var(--gradient-magenta)", boxShadow: "var(--glow-magenta)" }}
+                    >
+                      <c.icon size={18} className="text-primary-foreground" />
+                    </div>
+                    <div>
+                      <p className="font-medium">{c.title}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{c.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="glass neon-border h-full rounded-3xl p-6 md:p-8">
+              <h3 className="mb-6 flex items-center gap-2 font-display text-xl font-semibold">
+                <Building2 size={18} className="text-[var(--neon-cyan)]" /> Internships
+              </h3>
+              <div className="space-y-4">
+                {internships.map((c, i) => (
+                  <motion.div
+                    key={c.title}
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="glass flex gap-4 rounded-2xl p-4"
+                  >
+                    <div
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                      style={{ background: "var(--gradient-hero)", boxShadow: "var(--glow-cyan)" }}
+                    >
+                      <c.icon size={18} className="text-primary-foreground" />
+                    </div>
+                    <div>
+                      <p className="font-medium">{c.title}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{c.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ------------- RESUME ------------- */
 
 export function Resume() {
@@ -501,7 +628,8 @@ export function Resume() {
             the classroom and the lab.
           </p>
           <a
-            href="#contact"
+            href={RESUME_URL}
+            download
             className="mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-primary-foreground"
             style={{ background: "var(--gradient-hero)", boxShadow: "var(--glow-purple)" }}
           >

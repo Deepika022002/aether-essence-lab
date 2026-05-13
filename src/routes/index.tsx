@@ -3,7 +3,7 @@ import { Cursor } from "@/components/site/Cursor";
 import { Loader } from "@/components/site/Loader";
 import { Nav } from "@/components/site/Nav";
 import {
-  Hero, About, Skills, Projects, Help, Resume, Contact, LinkedInSection, Footer, BackToTop,
+  Hero, About, Skills, Projects, Help, Credentials, Resume, Contact, LinkedInSection, Footer, BackToTop,
 } from "@/components/site/Sections";
 
 export const Route = createFileRoute("/")({
@@ -29,6 +29,7 @@ function Index() {
       <Skills />
       <Projects />
       <Help />
+      <Credentials />
       <Resume />
       <Contact />
       <LinkedInSection />

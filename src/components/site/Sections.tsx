@@ -167,7 +167,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* 3D scene */}
+        {/* 3D scene + profile portrait */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -178,6 +178,24 @@ export function Hero() {
           <Suspense fallback={null}>
             <HeroScene />
           </Suspense>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4, duration: 0.9 }}
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+          >
+            <div
+              className="neon-border relative h-56 w-56 overflow-hidden rounded-full md:h-72 md:w-72"
+              style={{ boxShadow: "var(--glow-purple)" }}
+            >
+              <img
+                src={profilePic}
+                alt="Gnanadeepika Ramkumar portrait"
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -390,12 +408,16 @@ export function Skills() {
 /* ------------- PROJECTS ------------- */
 
 const projects = [
-  { title: "Student Performance Analyzer", desc: "Concept system that ingests student scores, surfaces trends and flags learners needing support.", tags: ["Data Analysis", "Reporting", "SQL"] },
-  { title: "Academic Documentation Hub", desc: "Structured documentation system for course material, assessments and lab manuals.", tags: ["Docs", "Templates", "QA"] },
-  { title: "Technical Training Toolkit", desc: "Modular slide + lab kit for delivering hands-on technical sessions to undergrad students.", tags: ["Training", "Slides", "Labs"] },
-  { title: "Lecture Presentation System", desc: "Reusable presentation framework focused on clarity, visual hierarchy and engagement.", tags: ["Presentation", "Design", "Comms"] },
-  { title: "Data Validation Workflow", desc: "Lightweight validation + QA flow inspired by analyst experience at Test Yantra.", tags: ["Validation", "QA", "Process"] },
-  { title: "Mentor Match Concept", desc: "UI concept matching students to mentors based on skills, goals and schedule overlap.", tags: ["UX", "Concept", "Matching"] },
+  {
+    title: "Design and Development of Luminent Leather Umbrella",
+    desc: "Final-year project exploring luminance treatments for leather, focused on visibility, durability and water repellency.",
+    tags: ["Luminance", "Water Repellency", "Durability"],
+    bullets: [
+      "Luminant characteristics of treated leather",
+      "Water repellency characteristics",
+      "Long-time durability of luminance",
+    ],
+  },
 ];
 
 export function Projects() {

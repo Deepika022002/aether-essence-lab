@@ -518,6 +518,99 @@ export function Help() {
   );
 }
 
+/* ------------- CREDENTIALS (Certificates + Internships) ------------- */
+
+const certificates = [
+  { icon: Award, title: "Internship — Ajanta Shoe Company", desc: "Industrial internship covering on-floor leather operations." },
+  { icon: Trophy, title: "2nd Position — Throwball, Anna University", desc: "Inter-college sports competition." },
+  { icon: Trophy, title: "1st Position — Color Matching, College Symposium", desc: "Technical competition in color science." },
+];
+
+const internships = [
+  { icon: Building2, title: "Hands-on Training — Ajanta Shoe Company", desc: "Practical training across leather processing and footwear assembly." },
+  { icon: Building2, title: "Hands-on Workshop — Ss International Tanning Exports, Dindigul", desc: "Workshop on tanning operations and export-grade leather processing." },
+];
+
+export function Credentials() {
+  return (
+    <section id="credentials" className="relative overflow-hidden px-6 py-32">
+      <GradientBlobs />
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--neon-cyan)]">05 — Credentials</p>
+          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+            Certificates & <span className="text-gradient-static">Internships</span>.
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <Reveal>
+            <div className="glass neon-border h-full rounded-3xl p-6 md:p-8">
+              <h3 className="mb-6 flex items-center gap-2 font-display text-xl font-semibold">
+                <Award size={18} className="text-[var(--neon-magenta)]" /> Certificates & Achievements
+              </h3>
+              <div className="space-y-4">
+                {certificates.map((c, i) => (
+                  <motion.div
+                    key={c.title}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="glass flex gap-4 rounded-2xl p-4"
+                  >
+                    <div
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                      style={{ background: "var(--gradient-magenta)", boxShadow: "var(--glow-magenta)" }}
+                    >
+                      <c.icon size={18} className="text-primary-foreground" />
+                    </div>
+                    <div>
+                      <p className="font-medium">{c.title}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{c.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="glass neon-border h-full rounded-3xl p-6 md:p-8">
+              <h3 className="mb-6 flex items-center gap-2 font-display text-xl font-semibold">
+                <Building2 size={18} className="text-[var(--neon-cyan)]" /> Internships
+              </h3>
+              <div className="space-y-4">
+                {internships.map((c, i) => (
+                  <motion.div
+                    key={c.title}
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="glass flex gap-4 rounded-2xl p-4"
+                  >
+                    <div
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                      style={{ background: "var(--gradient-hero)", boxShadow: "var(--glow-cyan)" }}
+                    >
+                      <c.icon size={18} className="text-primary-foreground" />
+                    </div>
+                    <div>
+                      <p className="font-medium">{c.title}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{c.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ------------- RESUME ------------- */
 
 export function Resume() {
